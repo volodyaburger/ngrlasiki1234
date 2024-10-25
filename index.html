@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸</title>
+    <title>hint : 🌸</title>
     <style>
         body {
             background-color: black;
@@ -17,8 +17,7 @@
             position: relative;
         }
 
-        body::before {
-            content: "";
+        #backgroundImage {
             position: absolute;
             width: 300px;
             height: 300px;
@@ -26,8 +25,8 @@
             background-size: cover;
             background-position: center;
             opacity: 0.05;
-            pointer-events: none;
             transition: background-image 0.5s ease;
+            pointer-events: none;
         }
 
         h1 {
@@ -39,7 +38,7 @@
         #inputField {
             position: relative;
             z-index: 1;
-            margin-top: 20px;
+            margin-top: 40px; /* Сдвиг вниз */
             padding: 8px;
             font-size: 16px;
             color: white;
@@ -48,6 +47,7 @@
             border-radius: 4px;
         }
 
+        /* Отключение выделения и контекстного меню */
         body {
             -webkit-user-select: none;
             -webkit-touch-callout: none;
@@ -59,17 +59,15 @@
 </head>
 <body>
     <h1>01.11.2024</h1>
-    <input type="text" id="inputField" placeholder="hanazyaka">
+    <div id="backgroundImage"></div>
+    <input type="text" id="inputField" placeholder="Подсказки повсюду">
 
     <script>
         document.getElementById("inputField").addEventListener("input", function() {
             const input = this.value.toLowerCase();
             if (input === "hanazyaka") {
-                document.body.style.setProperty("--background-image", "url('https://i.imgur.com/sYE1CLk.png')");
-                document.body.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
-                document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundPosition = "center";
-                document.body.style.backgroundColor = "black";
+                const backgroundImage = document.getElementById("backgroundImage");
+                backgroundImage.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
             }
         });
     </script>
