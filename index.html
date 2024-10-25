@@ -53,14 +53,14 @@
 <body>
     <h1>01.11.2024</h1>
     <div id="backgroundImage"></div>
-    <input type="text" id="inputField" placeholder="?">
+    <input type="text" id="inputField" placeholder="что было в жопе?">
 
     <script>
         document.getElementById("inputField").addEventListener("input", function() {
-            const input = this.value.trim();
-            const targetWord = "Удочка_в_жопе";
+            const input = this.value.trim().toLowerCase();
+            const correctWords = ["Удочку", "Удочка"];
 
-            if (input === targetWord) {
+            if (correctWords.includes(input)) {
                 const backgroundImage = document.getElementById("backgroundImage");
                 backgroundImage.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
                 backgroundImage.style.width = "400px";
