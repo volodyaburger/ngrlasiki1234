@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Molodets ;)</title>
+    <title>🌸</title>
     <style>
         body {
             background-color: black;
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -26,12 +27,25 @@
             background-position: center;
             opacity: 0.05;
             pointer-events: none;
+            transition: background-image 0.5s ease;
         }
 
         h1 {
             position: relative;
             color: #1a1a1a;
             z-index: 1;
+        }
+
+        #inputField {
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            padding: 8px;
+            font-size: 16px;
+            color: white;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 4px;
         }
 
         body {
@@ -45,5 +59,19 @@
 </head>
 <body>
     <h1>01.11.2024</h1>
+    <input type="text" id="inputField" placeholder="hanazyaka">
+
+    <script>
+        document.getElementById("inputField").addEventListener("input", function() {
+            const input = this.value.toLowerCase();
+            if (input === "hanazyaka") {
+                document.body.style.setProperty("--background-image", "url('https://i.imgur.com/sYE1CLk.png')");
+                document.body.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPosition = "center";
+                document.body.style.backgroundColor = "black";
+            }
+        });
+    </script>
 </body>
 </html>
