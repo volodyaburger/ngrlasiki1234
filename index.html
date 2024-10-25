@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>подсказка - 🎣</title>
+    <title>hint : 🎣</title>
     <style>
         body {
             background-color: black;
@@ -48,25 +48,19 @@
             border: 1px solid #555;
             border-radius: 4px;
         }
-
-        body {
-            -webkit-user-select: none;
-            -webkit-touch-callout: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
     </style>
 </head>
 <body>
     <h1>01.11.2024</h1>
     <div id="backgroundImage"></div>
-    <input type="text" id="inputField" placeholder="Что все таки было у мальчика?">
+    <input type="text" id="inputField" placeholder="?">
 
     <script>
         document.getElementById("inputField").addEventListener("input", function() {
-            const input = this.value.toLowerCase();
-            if (input === "Удочка в жопе") {
+            const input = this.value.trim();
+            const targetWord = "Удочка_в_жопе";
+
+            if (input === targetWord) {
                 const backgroundImage = document.getElementById("backgroundImage");
                 backgroundImage.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
                 backgroundImage.style.width = "400px";
