@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hint : 🌸</title>
+    <title>Teaser</title>
     <style>
         body {
             background-color: black;
@@ -25,7 +25,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0.05;
-            transition: background-image 0.5s ease;
+            transition: all 0.5s ease;
             pointer-events: none;
         }
 
@@ -38,7 +38,7 @@
         #inputField {
             position: relative;
             z-index: 1;
-            margin-top: 40px;
+            margin-top: 60px;
             padding: 8px;
             font-size: 16px;
             color: white;
@@ -59,14 +59,16 @@
 <body>
     <h1>01.11.2024</h1>
     <div id="backgroundImage"></div>
-    <input type="text" id="inputField" placeholder="Подсказки повсюду">
+    <input type="text" id="inputField" placeholder="вводить сюда">
 
     <script>
         document.getElementById("inputField").addEventListener("input", function() {
             const input = this.value.toLowerCase();
-            if (input === "hanazyaka") {
+            if (input === "ханазяка") {
                 const backgroundImage = document.getElementById("backgroundImage");
                 backgroundImage.style.backgroundImage = "url('https://i.imgur.com/sYE1CLk.png')";
+                backgroundImage.style.width = "400px";
+                backgroundImage.style.height = "400px";
             }
         });
     </script>
