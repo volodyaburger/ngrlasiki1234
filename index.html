@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soon...</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        #timer {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #teaserImage {
+            width: 150px;
+            height: 150px;
+            opacity: 0.1;
+            user-select: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">Загрузка таймера...</div>
+    <img id="teaserImage" src="https://i.imgur.com/AzRNduS.jpeg" alt="Тизер">
+    <script>
+        const endTime = new Date("2024-10-29T03:00:00Z").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const timeRemaining = endTime - now;
+
+            if (timeRemaining > 0) {
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").innerHTML = 
+                    `Осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
+            } else {
+                document.getElementById("timer").innerHTML = "Перезагрузи страницу 🤗";
+                clearInterval(timerInterval);
+            }
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
