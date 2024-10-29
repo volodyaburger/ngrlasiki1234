@@ -3,26 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>soon...</title>
+    <title>NGRLASIKI1234</title>
     <style>
         body {
-            background-color: black;
+            background: url('https://i.imgur.com/AjIwo7C.gif') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            color: white;
+            position: relative;
             overflow: hidden;
+        }
+
+        #overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+            text-align: center;
         }
 
-        #timer {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 24px;
-            margin-bottom: 20px;
+        h1 {
+            color: red;
+            font-size: 48px;
+            margin: 0;
+            display: flex;
+            align-items: center;
         }
 
+        h1 img {
+            height: 50px;
+            margin: 0 10px;
+        }
+
+        #map {
+            width: 80%;
+            height: 60vh;
+            margin-top: 20px;
+        }
+
+        #mapMessage {
+            font-size: 12px;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .yellow { background-color: yellow; color: black; }
+        .blue { background-color: blue; }
+
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <h1>
+            <img src="https://i.imgur.com/AzRNduS.jpeg" alt="Логотип слева">
+            САМЫЙ КРУТОЙ СЕРВЕР 2024
+            <img src="https://i.imgur.com/AzRNduS.jpeg" alt="Логотип справа">
+        </h1>
+        <div id="map"></div>
+        <div id="mapMessage">Если сайт недоступен, то сервер либо выключен, либо на перезагрузке.</div>
+        <div class="button-container">
+            <button class="button yellow" onclick="window.open('https://disk.yandex.ru/d/Lzn4ZSuobc1E_Q', '_blank')">Скачать (Yandex)</button>
+            <button class="button blue" onclick="window.open('https://drive.google.com/file/d/1LH81P3rGEmKSXfGpAQuAQ82atrMOvJ2c/view?usp=sharing', '_blank')">Скачать (Google)</button>
+        </div>
+        <div>Версия: 1.20.1 Forge</div>
+    </div>
+
+    <script>
+        const mapUrl = "http://185.9.145.209:25619/";
+        const mapDiv = document.getElementById("map");
+        mapDiv.innerHTML = <iframe src="${mapUrl}" style="width: 100%; height: 100%; border: none;"></iframe>;
+    </script>
+</body>
+</html>
         #teaserImage {
             width: 150px;
             height: 150px;
