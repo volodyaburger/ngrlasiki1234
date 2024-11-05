@@ -89,53 +89,16 @@
         <div id="map"></div>
         <div id="mapMessage">Если сайт недоступен, то сервер либо выключен, либо на перезагрузке.</div>
         <div class="button-container">
-            <button class="button yellow" onclick="window.open('https://disk.yandex.ru/d/Lzn4ZSuobc1E_Q', '_blank')">Скачать (Yandex)</button>
-            <button class="button blue" onclick="window.open('https://drive.google.com/file/d/1LH81P3rGEmKSXfGpAQuAQ82atrMOvJ2c/view?usp=sharing', '_blank')">Скачать (Google)</button>
+            <button class="button yellow" onclick="window.open('https://disk.yandex.ru/d/5C8oDYnkzd-lnw', '_blank')">Скачать (Yandex)</button>
+            <button class="button blue" onclick="window.open('https://drive.google.com/file/d/1LFMyAPImxELi0R4FcKlVk4VqIgT7igse/view?usp=sharing', '_blank')">Скачать (Google)</button>
         </div>
         <div>Версия: 1.20.1 Forge</div>
     </div>
 
     <script>
-        const mapUrl = "http://185.9.145.209:25619/";
+        const mapUrl = "http://185.9.145.209:25694/";
         const mapDiv = document.getElementById("map");
         mapDiv.innerHTML = <iframe src="${mapUrl}" style="width: 100%; height: 100%; border: none;"></iframe>;
-    </script>
-</body>
-</html>
-        #teaserImage {
-            width: 150px;
-            height: 150px;
-            opacity: 0.1;
-            user-select: none;
-            pointer-events: none;
-        }
-    </style>
-</head>
-<body>
-    <div id="timer">Загрузка таймера...</div>
-    <img id="teaserImage" src="https://i.imgur.com/AzRNduS.jpeg" alt="Тизер">
-    <script>
-        const endTime = new Date("2024-10-29T03:00:00Z").getTime();
-
-        function updateTimer() {
-            const now = new Date().getTime();
-            const timeRemaining = endTime - now;
-
-            if (timeRemaining > 0) {
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                document.getElementById("timer").innerHTML = 
-                    `Осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
-            } else {
-                document.getElementById("timer").innerHTML = "Перезагрузи страницу 🤗";
-                clearInterval(timerInterval);
-            }
-        }
-
-        const timerInterval = setInterval(updateTimer, 1000);
     </script>
 </body>
 </html>
