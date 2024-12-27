@@ -1,36 +1,37 @@
-// api/discord.js
-const { Client, GatewayIntentBits } = require('discord.js');
-const dotenv = require('dotenv');
+// /api/giveRole.js
 
-dotenv.config();
+import { Client, GatewayIntentBits } from 'discord.js';
 
+// Инициализация бота
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers]
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
 
-client.once('ready', () => {
-  console.log('Bot is online!');
-});
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const GUILD_ID = process.env.GUILD_ID;
+const ROLE_ID = process.env.ROLE_ID;
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(DISCORD_TOKEN);
 
-module.exports = async (req, res) => {
-  // Проверка на авторизацию или другие условия
-  if (!req.query.userId) {
-    return res.status(400).send('User ID is required');
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const { userId } = req.body;
+
+    try {
+      const guild = await client.guilds.fetch(GUILD_ID);
+      const member = await guild.members.fetch(userId);
+
+      if (!member.roles.cache.has(ROLE_ID)) {
+        await member.roles.add(ROLE_ID);
+        res.status(200).json({ message: 'Role added successfully' });
+      } else {
+        res.status(400).json({ message: 'User already has the role' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Failed to add role' });
+    }
+  } else {
+    res.status(405).json({ message: 'Method Not Allowed' });
   }
-
-  const userId = req.query.userId;
-  const guildId = process.env.GUILD_ID;
-  const roleId = process.env.ROLE_ID;
-
-  try {
-    const guild = await client.guilds.fetch(guildId);
-    const member = await guild.members.fetch(userId);
-    await member.roles.add(roleId);
-    res.status(200).send('Role added successfully');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error adding role');
-  }
-};
+}
